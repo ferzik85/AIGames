@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "FinanceMcpServer": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
