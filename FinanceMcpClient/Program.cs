@@ -17,11 +17,16 @@ namespace FinanceMcpClient
                 .AddEnvironmentVariables()
                 .AddUserSecrets<Program>();
 
-            var clientTransport = new StdioClientTransport(new()
+            //var clientTransport = new StdioClientTransport(new()
+            //{
+            //    Name = "Finance Mcp Server",
+            //    Command = "dotnet",
+            //    Arguments = ["C:\\Users\\Sergey_Sidyakin\\source\\repos\\AIGames\\FinanceMcpServer\\bin\\debug\\net10.0\\FinanceMcpServer.dll"],
+            //});
+
+            var clientTransport = new HttpClientTransport(new()
             {
-                Name = "Finance Mcp Server",
-                Command = "dotnet",
-                Arguments = ["C:\\Users\\Sergey_Sidyakin\\source\\repos\\AIGames\\FinanceMcpServer\\bin\\debug\\net10.0\\FinanceMcpServer.dll"],
+                Endpoint = new Uri("http://localhost:3001")
             });
 
             await using var mcpClient = await McpClient.CreateAsync(clientTransport);

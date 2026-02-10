@@ -22,7 +22,8 @@ namespace FinanceMcpServerWebApi
 
             builder.Services.AddHttpClient("FinanceApi", client =>
             {
-                client.BaseAddress = new Uri("http://localhost:5000");
+                var baseUrl = builder.Configuration["FinanceApi:BaseUrl"]!;
+                client.BaseAddress = new Uri(baseUrl);
             });
 
             var app = builder.Build();

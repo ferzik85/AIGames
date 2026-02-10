@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: FinanceApi/Dockerfile
+    container_name: financeapi
     ports:
       - "5000:8080"
     environment:
@@ -12,6 +13,22 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
     networks:
       - ai-games-network
+
+  financemcpserverwebapi:
+    build:
+      context: .
+      dockerfile: FinanceMcpServerWebApi/Dockerfile
+    container_name: financemcpserverwebapi
+    ports:
+      - "5001:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - FinanceApi__BaseUrl=http://financeapi:8080
+    networks:
+      - ai-games-network
+    depends_on:
+      - financeapi
 
 networks:
   ai-games-network:
