@@ -1,4 +1,4 @@
-﻿using Anthropic;
+﻿//using Anthropic;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -26,7 +26,7 @@ namespace FinanceMcpClient
 
             var clientTransport = new HttpClientTransport(new()
             {
-                Endpoint = new Uri("http://localhost:3001")
+                Endpoint = new Uri("http://localhost:5001")
             });
 
             await using var mcpClient = await McpClient.CreateAsync(clientTransport);
