@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.AI;
+﻿using Anthropic;
+using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using ModelContextProtocol.Client;
@@ -31,14 +32,21 @@ namespace FinanceMcpClient
                 Console.WriteLine($"Connected to server with tools: {tool.Name}");
             }
 
+            //var aiModel = "claude-haiku-4-5-20251001";
+            //using var aiClient = new AnthropicClient(new() { ApiKey = builder.Configuration["ANTHROPIC_API_KEY"] })
+            //    .AsIChatClient(aiModel)
+            //    .AsBuilder()
+            //    .UseFunctionInvocation()
+            //    .Build();
+
             var aiModel = "gpt-4.1-mini";
             var githubToken = builder.Configuration["GITHUB_TOKEN"]!;
             IChatClient aiClient = new OpenAI.Chat.ChatClient(
-                aiModel, 
+                aiModel,
                 new ApiKeyCredential(githubToken),
                 new OpenAI.OpenAIClientOptions()
                 {
-                    Endpoint= new Uri("https://models.github.ai/inference"),  
+                    Endpoint = new Uri("https://models.github.ai/inference"),
                 })
                 .AsIChatClient()
                 .AsBuilder()

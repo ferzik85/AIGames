@@ -2,4 +2,5 @@
   <Project Path="FinanceApi/FinanceApi.csproj" />
   <Project Path="FinanceMcpClient/FinanceMcpClient.csproj" Id="fe95d04d-d31d-4ccd-9de2-d3f3cf3b7d02" />
   <Project Path="FinanceMcpServer/FinanceMcpServer.csproj" Id="803f9c15-3aa9-49c4-9d02-09828f8740f2" />
+  <Project Path="FinanceMcpServerWebApi/FinanceMcpServerWebApi.csproj" Id="2ac930d6-0271-4f25-be4e-ca4097228d85" />
 </Solution>
